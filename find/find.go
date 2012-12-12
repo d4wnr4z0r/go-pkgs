@@ -1,10 +1,10 @@
 // copyright 2012 Jacob Pipkin
 //
-// DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE                                  
-// TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION              
-//                                                                              
-// 0. You just DO WHAT THE FUCK YOU WANT TO.                                    
-//                                                                              
+// DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+// TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+//
+// 0. You just DO WHAT THE FUCK YOU WANT TO.
+//
 // Package find provides mechanisms to search for files/folders under a
 // directory tree.
 package find
