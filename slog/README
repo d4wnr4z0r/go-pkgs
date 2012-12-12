@@ -1,0 +1,46 @@
+PACKAGE
+
+package slog
+    import "slog"
+
+    copyright 2012 Jacob Pipkin
+
+    DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE TERMS AND CONDITIONS FOR
+    COPYING, DISTRIBUTION AND MODIFICATION
+
+    0. You just DO WHAT THE FUCK YOU WANT TO. Package slog provides an
+    interface to syslog which allows setting the syslog facillity.
+
+FUNCTIONS
+
+func Alert(m string) (err error)
+    send an alert to syslog
+
+func Crit(m string) (err error)
+    send a critical to syslog
+
+func Debug(m string) (err error)
+    send a debug to syslog
+
+func Emerg(m string) (err error)
+    send an emergency to syslog
+
+func Err(m string) (err error)
+    send an error to syslog
+
+func Info(m string) (err error)
+    send an info to syslog
+
+func Notice(m string) (err error)
+    send a notice to syslog
+
+func SetFac(s string) error
+    function to set facility to log to
+
+func SetName(s string) error
+    function to set the logging-as name
+
+func Warn(m string) (err error)
+    send a warning to syslog
+
+
