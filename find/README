@@ -1,0 +1,31 @@
+PACKAGE
+
+package find
+    import "find"
+
+    copyright 2012 Jacob Pipkin
+
+    DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE TERMS AND CONDITIONS FOR
+    COPYING, DISTRIBUTION AND MODIFICATION
+
+    0. You just DO WHAT THE FUCK YOU WANT TO.
+
+    Package find provides mechanisms to search for files/folders under a
+    directory tree.
+
+FUNCTIONS
+
+func DirRegex(path string, r string) ([]string, error)
+    find for directories matching a given regex
+
+func Find(path string, fn func(s string, i os.FileInfo)) (err error)
+    function that does the actual finding and processing
+
+func Regex(path string, r string) ([]string, error)
+    find for anything matching a given regex
+
+
+SUBDIRECTORIES
+
+	test.d
+
