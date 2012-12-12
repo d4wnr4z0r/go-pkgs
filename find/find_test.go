@@ -2,7 +2,6 @@ package find
 
 import (
 	"testing"
-	"fmt"
 )
 
 func TestRegex01(t *testing.T) {
@@ -18,10 +17,7 @@ func TestRegex01(t *testing.T) {
 			t.Error("Find did not find find.go")
 		}
 	} else {
-		for _, found := range results {
-			fmt.Println(found)
-		}
-		t.Errorf("length of results is %s", len(results))
+		t.Errorf("length of results is %s", string(len(results)))
 	}
 }
 
@@ -41,9 +37,6 @@ func TestDirRegex01(t *testing.T) {
 	results, err := DirRegex(".", `\.d$`)
 	if err != nil {
 		t.Errorf("DirRegex(\".\", `\\.d$`) produced error %s", err)
-	}
-	for _, found := range results {
-		fmt.Println(found)
 	}
 	if len(results) == 1 {
 		if results[0] != "./test.d" {
