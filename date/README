@@ -1,0 +1,28 @@
+PACKAGE
+
+package date
+    import "date"
+
+    copyright 2012 Jacob Pipkin
+
+    DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE TERMS AND CONDITIONS FOR
+    COPYING, DISTRIBUTION AND MODIFICATION
+
+    0. You just DO WHAT THE FUCK YOU WANT TO.
+
+    Package date provides a wrapper around time.Format calls for go's
+    bizarre formatting mechanism which is different from the standard
+    mechanism and requires reading the time/format.go source to determine.
+
+FUNCTIONS
+
+func HHMM(t time.Time) string
+    return 24-hour time
+
+func MDY(t time.Time) string
+    return mmddyyyy
+
+func MDYs(t time.Time, s string) string
+    return mm dd yyyy, separated by s
+
+
