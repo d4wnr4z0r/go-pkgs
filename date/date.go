@@ -10,7 +10,10 @@
 // requires reading the time/format.go source to determine.
 package date
 
-import "time"
+import (
+	"time"
+	"bytes"
+)
 
 // return mmddyyyy
 func MDY(t time.Time) string {
@@ -19,7 +22,11 @@ func MDY(t time.Time) string {
 
 // return mm dd yyyy, separated by s
 func MDYs(t time.Time, s string) string {
-	return t.Format("01"+s+"02"+s+"2006")
+	var buffer bytes.Buffer
+	for _, bit := range []string{"01", s, "02", s, "2006"} {
+		buffer.WriteString(bit)
+	}
+	return t.Format(buffer.String())
 }
 
 // return 24-hour time
