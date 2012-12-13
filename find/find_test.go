@@ -23,7 +23,7 @@ func TestRegex01(t *testing.T) {
 			t.Error("Find did not find find.go")
 		}
 	} else {
-		t.Errorf("length of results is %s", string(len(results)))
+		t.Errorf("length of results is %d", len(results))
 	}
 }
 
@@ -46,9 +46,10 @@ func TestDirRegex01(t *testing.T) {
 	}
 	if len(results) == 1 {
 		if results[0] != "./test.d" {
-			t.Error("FindDir did not find testdir")
+			t.Error("DirRegex did not find test.d")
 		}
 	} else {
-		t.Error("length of results is", string(len(results)))
+		t.Errorf("length of results is %d", len(results))
 	}
 }
+
