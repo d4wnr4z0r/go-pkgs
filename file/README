@@ -1,0 +1,17 @@
+PACKAGE
+
+package file
+    import "file"
+
+
+FUNCTIONS
+
+func Copy(s, d string) error
+    destination can be either a directory or a file; if it is a directory,
+    src is copied into that directory with the same file name. otherwise, it
+    is copied into the specified file.
+
+func IsDir(s string) bool
+    file.IsDir returns whether or not the given string is a directory
+
+
