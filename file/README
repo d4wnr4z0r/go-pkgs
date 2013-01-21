@@ -11,7 +11,15 @@ func Copy(s, d string) error
     src is copied into that directory with the same file name. otherwise, it
     is copied into the specified file.
 
+func DirCopy(s, d string) error
+    copy src directory, s, to dst directory, d; d will be created if it does
+    not already exist.
+
 func IsDir(s string) bool
     file.IsDir returns whether or not the given string is a directory
 
+
+SUBDIRECTORIES
+
+	test.d.1
 

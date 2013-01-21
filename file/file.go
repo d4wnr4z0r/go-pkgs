@@ -14,6 +14,8 @@ import (
 	"os"
 	"io"
 	"strings"
+	"../find"
+	"regexp"
 )
 
 // file.IsDir returns whether or not the given string is a directory
@@ -41,9 +43,15 @@ func Copy(s, d string) error {
 		return err
 	}
 
+	// if the destination is a directory, copy src into it. otherwise, copy src
+	// to a file with the destination name. return an error if we can't create
+	// that file.
 	if IsDir(d) {
 		paths := strings.Split(s, "/")
 		file := paths[len(paths)-1]
+		if file == "" {
+			file = paths[len(paths)-2]
+		}
 		if file == "" {
 			return errors.New("invalid src provided to file.Copy")
 		}
@@ -54,9 +62,8 @@ func Copy(s, d string) error {
 		_, err = io.Copy(dst, src)
 		if err != nil {
 			return err
-		} else {
-			return nil
 		}
+		return nil
 	} else {
 		dst, err := os.Create(d)
 		if err != nil {
@@ -66,6 +73,48 @@ func Copy(s, d string) error {
 		if err != nil {
 			return err
 		}
+	}
+	return nil
+}
+
+// copy src directory, s, to dst directory, d; d will be created if it does not
+// already exist.
+func DirCopy(s, d string) error {
+	if s == "" {
+		return errors.New("empty src provided to file.DirCopy")
+	}
+	if d == "" {
+		return errors.New("empty dst provided to file.DirCopy")
+	}
+
+	// create dst if it does not exist
+	info, err := os.Stat(d)
+	if err != nil {
+		info, err = os.Stat(s)
+		if err != nil {
+			return err
+		}
+		err = os.MkdirAll(d, info.Mode())
+		if err != nil {
+			return err
+		}
+	}
+
+	// recurse over the src tree, creating any required directories and copying
+	// any files into those directories
+	err = find.Find(s, func(p string, i os.FileInfo) {
+		regex, _ := regexp.Compile(s)
+		dst := regex.ReplaceAllLiteralString(p, d)
+		if i.IsDir() {
+			info, _ := os.Stat(p)
+			os.MkdirAll(dst, info.Mode())
+		} else {
+			Copy(p, dst)
+		}
+	})
+
+	if err != nil {
+		return err
 	}
 	return nil
 }
