@@ -129,7 +129,7 @@ func ChownR(path string, uid, gid int) error {
 	// it once for each time we chown something else
 	os.Chown(path, uid, gid)
 
-	err = find.Find(path, func(p string, i os.FileInfo) {
+	err := find.Find(path, func(p string, i os.FileInfo) {
 		os.Chown(p, uid, gid)
 	})
 	if err != nil {
