@@ -121,17 +121,7 @@ func DirCopy(s, d string) error {
 
 // ChownR - perform a recursive chown.
 func ChownR(path string, uid, gid int) error {
-	dh, err := os.Open(path)
-	if err != nil {
-		return err
-	}
-
-	info, err := dh.Stat()
-	if err != nil {
-		return err
-	}
-
-	if !info.IsDir() {
+	if !IsDir(path) {
 		return errors.New(path +" is not a valid directory.")
 	}
 
