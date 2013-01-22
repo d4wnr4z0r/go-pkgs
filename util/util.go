@@ -118,3 +118,32 @@ func DirCopy(s, d string) error {
 	}
 	return nil
 }
+
+// ChownR - perform a recursive chown.
+func ChownR(path string, uid, gid int) error {
+	dh, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+
+	info, err := dh.Stat()
+	if err != nil {
+		return err
+	}
+
+	if !info.IsDir() {
+		return errors.New(path +" is not a valid directory.")
+	}
+
+	// the find.Find call will not chown the directory itself - unless we chown
+	// it once for each time we chown something else
+	os.Chown(path, uid, gid)
+
+	err = find.Find(path, func(p string, i os.FileInfo) {
+		os.Chown(p, uid, gid)
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}

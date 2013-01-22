@@ -6,6 +6,9 @@ package util
 
 FUNCTIONS
 
+func ChownR(path string, uid, gid int) error
+    ChownR - perform a recursive chown.
+
 func Copy(s, d string) error
     destination can be either a directory or a file; if it is a directory,
     src is copied into that directory with the same file name. otherwise, it
