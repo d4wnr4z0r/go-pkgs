@@ -1,7 +1,7 @@
 PACKAGE
 
-package file
-    import "file"
+package util
+    import "util"
 
 
 FUNCTIONS
@@ -16,7 +16,7 @@ func DirCopy(s, d string) error
     not already exist.
 
 func IsDir(s string) bool
-    file.IsDir returns whether or not the given string is a directory
+    util.IsDir returns whether or not the given string is a directory
 
 
 SUBDIRECTORIES

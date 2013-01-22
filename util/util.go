@@ -5,9 +5,9 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO. 
 //
-// Package file provides wrappers around os/io calls for convenience
+// Package util provides wrappers around os/io calls for convenience
 
-package file
+package util 
 
 import (
 	"errors"
@@ -18,7 +18,7 @@ import (
 	"regexp"
 )
 
-// file.IsDir returns whether or not the given string is a directory
+// util.IsDir returns whether or not the given string is a directory
 func IsDir(s string) bool {
 	info, err := os.Stat(s)
 	if err != nil {
@@ -32,10 +32,10 @@ func IsDir(s string) bool {
 // copied into the specified file.
 func Copy(s, d string) error {
 	if s == "" {
-		return errors.New("empty src provided to file.Copy")
+		return errors.New("empty src provided to util.Copy")
 	}
 	if d == "" {
-		return errors.New("empty dst provided to file.Copy")
+		return errors.New("empty dst provided to util.Copy")
 	}
 
 	src, err := os.Open(s)
@@ -53,7 +53,7 @@ func Copy(s, d string) error {
 			file = paths[len(paths)-2]
 		}
 		if file == "" {
-			return errors.New("invalid src provided to file.Copy")
+			return errors.New("invalid src provided to util.Copy")
 		}
 		dst, err := os.Create(d +"/"+ file)
 		if err != nil {
@@ -81,10 +81,10 @@ func Copy(s, d string) error {
 // already exist.
 func DirCopy(s, d string) error {
 	if s == "" {
-		return errors.New("empty src provided to file.DirCopy")
+		return errors.New("empty src provided to util.DirCopy")
 	}
 	if d == "" {
-		return errors.New("empty dst provided to file.DirCopy")
+		return errors.New("empty dst provided to util.DirCopy")
 	}
 
 	// create dst if it does not exist

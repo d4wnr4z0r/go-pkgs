@@ -5,9 +5,9 @@
 //
 // 0. You just DO WHAT THE FUCK YOU WANT TO. 
 //
-// Package file provides wrappers around os/io calls for convenience
+// Package util provides wrappers around os/io calls for convenience
 
-package file
+package util
 
 import (
 	"testing"
@@ -21,7 +21,7 @@ func TestIsDir(t *testing.T) {
 		t.Error(err)
 	}
 	if !IsDir(pwd) {
-		t.Error("file.IsDir(pwd) returned false")
+		t.Error("util.IsDir(pwd) returned false")
 	}
 }
 
