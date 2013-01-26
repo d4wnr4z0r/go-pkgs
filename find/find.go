@@ -67,7 +67,7 @@ func Regex(path string, r string) ([]string, error) {
 	}
 
 	err = Find(path, func(s string, i os.FileInfo) {
-		if regex.FindString(regexp.QuoteMeta(i.Name())) != "" {
+		if regex.FindString(i.Name()) != "" {
 			results = append(results, s)
 		}
 	})
@@ -89,7 +89,7 @@ func DirRegex(path string, r string) ([]string, error) {
 
 	err = Find(path, func(s string, i os.FileInfo) {
 		if i.Mode().IsDir() {
-			if regex.FindString(regexp.QuoteMeta(i.Name())) != "" {
+			if regex.FindString(i.Name()) != "" {
 				results = append(results, s)
 			}
 		}
