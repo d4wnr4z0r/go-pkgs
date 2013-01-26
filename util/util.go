@@ -42,6 +42,7 @@ func Copy(s, d string) error {
 	if err != nil {
 		return err
 	}
+	defer src.Close()
 
 	// if the destination is a directory, copy src into it. otherwise, copy src
 	// to a file with the destination name. return an error if we can't create
@@ -69,6 +70,8 @@ func Copy(s, d string) error {
 		if err != nil {
 			return err
 		}
+		defer dst.Close()
+
 		_, err = io.Copy(dst, src)
 		if err != nil {
 			return err

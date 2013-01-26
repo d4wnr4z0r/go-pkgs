@@ -32,6 +32,7 @@ func Find(path string, fn func(s string, i os.FileInfo)) (err error) {
 	if err != nil {
 		return err
 	}
+	defer dirh.Close()
 
 	infoSlice := make([]os.FileInfo, 1)
 	infoSlice, err = dirh.Readdir(1)
