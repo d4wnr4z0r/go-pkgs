@@ -94,7 +94,7 @@ func send(m string) error {
 	return nil
 }
 
-func sendPriority(p string, m string) (err error) {
+func SendPriority(p string, m string) (err error) {
 	priority = C.int(priorities[p])
 	err = send(m)
 	return
@@ -102,48 +102,48 @@ func sendPriority(p string, m string) (err error) {
 
 // send an emergency to syslog
 func Emerg(m string) (err error) {
-	err = sendPriority("emerge", m)
+	err = SendPriority("emerge", m)
 	return
 }
 
 // send an alert to syslog
 func Alert(m string) (err error) {
-	err = sendPriority("alert", m)
+	err = SendPriority("alert", m)
 	return
 }
 
 // send a critical to syslog
 func Crit(m string) (err error) {
-	err = sendPriority("crit", m)
+	err = SendPriority("crit", m)
 	return
 }
 
 // send an error to syslog
 func Err(m string) (err error) {
-	err = sendPriority("err", m)
+	err = SendPriority("err", m)
 	return
 }
 
 // send a warning to syslog
 func Warn(m string) (err error) {
-	err = sendPriority("warn", m)
+	err = SendPriority("warn", m)
 	return
 }
 
 // send a notice to syslog
 func Notice(m string) (err error) {
-	err = sendPriority("notice", m)
+	err = SendPriority("notice", m)
 	return
 }
 
 // send an info to syslog
 func Info(m string) (err error) {
-	err = sendPriority("info", m)
+	err = SendPriority("info", m)
 	return
 }
 
 // send a debug to syslog
 func Debug(m string) (err error) {
-	err = sendPriority("debug", m)
+	err = SendPriority("debug", m)
 	return
 }
